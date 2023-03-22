@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Hensl\\Desktop\\ETSU Work\\Spring2023\\Data Structures\\Warehouse\\Warehouse\\Warehouse.csproj": {}
+    "C:\\Users\\Hensl\\Desktop\\Ace\\Personal\\ETSU Work\\Spring2023\\Data Structures\\Warehouse\\Warehouse\\Warehouse.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Hensl\\Desktop\\ETSU Work\\Spring2023\\Data Structures\\Warehouse\\Warehouse\\Warehouse.csproj": {
+    "C:\\Users\\Hensl\\Desktop\\Ace\\Personal\\ETSU Work\\Spring2023\\Data Structures\\Warehouse\\Warehouse\\Warehouse.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hensl\\Desktop\\ETSU Work\\Spring2023\\Data Structures\\Warehouse\\Warehouse\\Warehouse.csproj",
+        "projectUniqueName": "C:\\Users\\Hensl\\Desktop\\Ace\\Personal\\ETSU Work\\Spring2023\\Data Structures\\Warehouse\\Warehouse\\Warehouse.csproj",
         "projectName": "Warehouse",
-        "projectPath": "C:\\Users\\Hensl\\Desktop\\ETSU Work\\Spring2023\\Data Structures\\Warehouse\\Warehouse\\Warehouse.csproj",
+        "projectPath": "C:\\Users\\Hensl\\Desktop\\Ace\\Personal\\ETSU Work\\Spring2023\\Data Structures\\Warehouse\\Warehouse\\Warehouse.csproj",
         "packagesPath": "C:\\Users\\Hensl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hensl\\Desktop\\ETSU Work\\Spring2023\\Data Structures\\Warehouse\\Warehouse\\obj\\",
+        "outputPath": "C:\\Users\\Hensl\\Desktop\\Ace\\Personal\\ETSU Work\\Spring2023\\Data Structures\\Warehouse\\Warehouse\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

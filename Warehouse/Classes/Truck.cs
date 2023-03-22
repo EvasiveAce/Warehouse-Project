@@ -10,7 +10,7 @@ namespace Warehouse.Classes
     {
         string Driver { get; set; }
         string DeliveryCompany { get; set; }
-        Stack<Crate> Trailer { get; set; }
+        Stack<Crate> Trailer { get; set; } = new Stack<Crate>();
 
         public void Load(Crate crate)
         {
