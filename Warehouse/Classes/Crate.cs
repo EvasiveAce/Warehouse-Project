@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Warehouse.Classes
+namespace WarehouseProject.Classes
 {
     public class Crate
     {
-        string Id { get; set; }
-        double Price { get; set; } = new Random().Next(50, 501);
+        public string Id { get; set; }
+        public double Price { get; set; } = new Random().Next(50, 501);
     }
 }
