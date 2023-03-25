@@ -10,16 +10,19 @@ namespace WarehouseProject.Classes
     {
         string Id { get; set; }
         public Queue<Truck> Line { get; set; } = new Queue<Truck>();
-        double TotalSales { get; set; }
-        int TotalCrates { get; set; }
-        int TotalTrucks { get; set; }
-        int TimeInUse { get; set; }
-        int TimeNotInUse { get; set; }
+        public double TotalSales { get; set; }
+        public int TotalCrates { get; set; }
+        public int TotalTrucks { get; set; }
+        public int TimeInUse { get; set; } // prob wont implement
+        public int TimeNotInUse { get; set; } // prob wont implement
+
+        public bool Processing = false;
 
         //Total Trucks *  100
 
         public void JoinLine(Truck truck)
         {
+            TotalTrucks += 1;
             Line.Enqueue(truck);
         }
 

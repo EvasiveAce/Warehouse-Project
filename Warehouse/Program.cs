@@ -12,7 +12,7 @@ namespace WarehouseProject
         public static void Main(string[] args)
         {
             Warehouse warehouse = new Warehouse();
-            Truck truck = new Truck();
+
             warehouse.Run();
         }
     }

@@ -15,9 +15,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Hensl\\Desktop\\Ace\\Personal\\ETSU Work\\Spring2023\\Data Structures\\Warehouse\\Warehouse\\Warehouse.csproj",
-      "projectName": "Warehouse",
-      "projectPath": "C:\\Users\\Hensl\\Desktop\\Ace\\Personal\\ETSU Work\\Spring2023\\Data Structures\\Warehouse\\Warehouse\\Warehouse.csproj",
+      "projectUniqueName": "C:\\Users\\Hensl\\Desktop\\Ace\\Personal\\ETSU Work\\Spring2023\\Data Structures\\Warehouse\\Warehouse\\WarehouseProject.csproj",
+      "projectName": "WarehouseProject",
+      "projectPath": "C:\\Users\\Hensl\\Desktop\\Ace\\Personal\\ETSU Work\\Spring2023\\Data Structures\\Warehouse\\Warehouse\\WarehouseProject.csproj",
       "packagesPath": "C:\\Users\\Hensl\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Hensl\\Desktop\\Ace\\Personal\\ETSU Work\\Spring2023\\Data Structures\\Warehouse\\Warehouse\\obj\\",
       "projectStyle": "PackageReference",

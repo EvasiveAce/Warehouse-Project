@@ -13,9 +13,11 @@ namespace WarehouseProject.Classes
 
         string[] Companies = { "Weezer", "Gorillaz", "Pixies", "The Rentals", "Ween" };
 
-        string Driver { get; set; }
-        string DeliveryCompany { get; set; }
-        Stack<Crate> Trailer { get; set; } = new Stack<Crate>();
+        public string Driver { get; set; }
+        public string DeliveryCompany { get; set; }
+        public Stack<Crate> Trailer { get; set; } = new Stack<Crate>();
+
+        public bool Processed = false;
 
 
         public void Load(Crate crate)
