@@ -19,6 +19,8 @@ namespace WarehouseProject.Classes
 
         public bool Processed = false;
 
+        public Crate[] crates;
+
 
         public void Load(Crate crate)
         {
@@ -35,13 +37,17 @@ namespace WarehouseProject.Classes
         public Truck()
         {
             Random rand = new Random();
+
             var CrateAmount = rand.Next(1, 11);
+            crates = new Crate[CrateAmount];
             Driver = $"{FirstNames[rand.Next(0, FirstNames.Length)]} {LastNames[rand.Next(0, LastNames.Length)]}";
             DeliveryCompany = Companies[rand.Next(0, Companies.Length)];
+
             for (int i = 0; i < CrateAmount; i++)
             {
                 Crate crateToAdd = new Crate();
                 crateToAdd.Id = $"C{i+1}";
+                crates[i] = crateToAdd;
                 //Console.WriteLine(crateToAdd.Id);
                 //Console.WriteLine($"${crateToAdd.Price}");
                 Load(crateToAdd);

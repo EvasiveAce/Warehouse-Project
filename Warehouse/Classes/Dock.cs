@@ -13,8 +13,8 @@ namespace WarehouseProject.Classes
         public double TotalSales { get; set; }
         public int TotalCrates { get; set; }
         public int TotalTrucks { get; set; }
-        public int TimeInUse { get; set; } // prob wont implement
-        public int TimeNotInUse { get; set; } // prob wont implement
+        public int TimeInUse { get; set; } 
+        public int TimeNotInUse { get; set; } 
 
         public bool Processing = false;
 
