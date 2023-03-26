@@ -7,6 +7,9 @@ using WarehouseProject.Classes;
 
 namespace WarehouseProject
 {   
+    /// <summary>
+    /// Warehouse project, by Ethan Hensley and Patrick Vergason
+    /// </summary>
     class Program
     {
         public static void Main(string[] args)

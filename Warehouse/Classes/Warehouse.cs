@@ -6,19 +6,28 @@ using System.Threading.Tasks;
 
 namespace WarehouseProject.Classes
 {
+    /// <summary>
+    /// Warehouse class, which houses the process of making the docks,
+    /// having the trucks go through them, and unload the crates.
+    /// </summary>
     public class Warehouse
     {
-        List<Dock> Docks = new List<Dock>();
+        List<Dock> Docks = new List<Dock>(); 
 
-        Queue<Truck> Entrance = new Queue<Truck>();
+        Queue<Truck> Entrance = new Queue<Truck>(); // Entrance Queue for the trucks
 
-        Truck[] Trucks = new Truck[50];
+        Truck[] Trucks = new Truck[50]; // Array of up to 50 Trucks
 
         int timeIncrement = 0;
 
+        /// <summary>
+        /// Main method for the simulation execution.
+        /// 
+        /// Instantiates the docks, adds trucks, and unloads crates.
+        /// </summary>
         public void Run()
         {
-            // Dock naming convetion D + number
+            // Dock naming convention D + number
             Dock dock1 = new Dock("D01");
             Docks.Add(dock1);
 
@@ -35,18 +44,19 @@ namespace WarehouseProject.Classes
             }
 
 
-            // LAter on
+            // Later on
             // AddTruck(truck1, dock1);
 
 
-            // this is where everything will happen i think
+            // this is where everything should happen
             while(timeIncrement < 48)
             {
+                // Pull a truck from the queue to move to a dock, for unloading
                 AddTruck(RandomTruckPull());
                 // for each item in a list
                 foreach (var item in Docks)
                 {
-
+                    // If there is a dock without a truck at it, and there are more trucks left
                     if (item.Line.Count == 0 && Entrance.Count > 0)
                     {
                         // Leaving entrance line to dock line to actually be processed
@@ -55,19 +65,19 @@ namespace WarehouseProject.Classes
                         item.Processing = true;
 
                     }
-                    else if(item.Processing)
+                    else if(item.Processing) // if a truck is currently being processed at a dock
                     {
                         item.TimeInUse += 1;
-                        var truckToUnload = item.Line.Peek();
-                        if(truckToUnload.Trailer.Count != 0)
+                        var truckToUnload = item.Line.Peek(); // Check the contents of the truck currently at the dock
+                        if(truckToUnload.Trailer.Count != 0) // If there is stuff to be unloaded
                         {
-                            var crate = truckToUnload.Unload();
-                            item.TotalCrates++;
-                            item.TotalSales += crate.Price;
+                            var crate = truckToUnload.Unload(); // Unload a crate
+                            item.TotalCrates++; // Update TotalCrates amount
+                            item.TotalSales += crate.Price; // Update the sales prices by adding the unloaded crate's price
                         }
                         else
                         {
-                            item.SendOff();
+                            item.SendOff(); // Truck is fully unloaded and heads away
                             item.Processing = false;
                         }
                     }
@@ -91,6 +101,10 @@ namespace WarehouseProject.Classes
             Console.WriteLine(dock3.TimeInUse);
         }
 
+        /// <summary>
+        /// Adds a truck to the Entrance Queue
+        /// </summary>
+        /// <param name="truck">A Truck class object, named truck</param>
         public void AddTruck(Truck truck)
         {
             Entrance.Enqueue(truck);
@@ -98,6 +112,10 @@ namespace WarehouseProject.Classes
         }
 
 
+        /// <summary>
+        /// Removes a truck from the Entrance Queue
+        /// </summary>
+        /// <returns>The specific truck to be removed</returns>
         public Truck RemoveTruck()
         {
             return Entrance.Dequeue();
@@ -105,6 +123,10 @@ namespace WarehouseProject.Classes
         }
 
 
+        /// <summary>
+        /// Pulls a random truck from the Entrance Queue to be processed at the dock
+        /// </summary>
+        /// <returns>The specific truck to be processed</returns>
         public Truck RandomTruckPull()
         {
             Random rand = new Random();
