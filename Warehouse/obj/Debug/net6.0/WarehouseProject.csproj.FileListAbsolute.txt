@@ -1,0 +1,17 @@
+C:\Users\darkp\Downloads\Warehouse-Project-main\Warehouse-Project-main\Warehouse\bin\Debug\net6.0\WarehouseProject.exe
+C:\Users\darkp\Downloads\Warehouse-Project-main\Warehouse-Project-main\Warehouse\bin\Debug\net6.0\WarehouseProject.deps.json
+C:\Users\darkp\Downloads\Warehouse-Project-main\Warehouse-Project-main\Warehouse\bin\Debug\net6.0\WarehouseProject.runtimeconfig.json
+C:\Users\darkp\Downloads\Warehouse-Project-main\Warehouse-Project-main\Warehouse\bin\Debug\net6.0\WarehouseProject.dll
+C:\Users\darkp\Downloads\Warehouse-Project-main\Warehouse-Project-main\Warehouse\bin\Debug\net6.0\WarehouseProject.pdb
+C:\Users\darkp\Downloads\Warehouse-Project-main\Warehouse-Project-main\Warehouse\bin\Debug\net6.0\Figgle.dll
+C:\Users\darkp\Downloads\Warehouse-Project-main\Warehouse-Project-main\Warehouse\obj\Debug\net6.0\WarehouseProject.csproj.AssemblyReference.cache
+C:\Users\darkp\Downloads\Warehouse-Project-main\Warehouse-Project-main\Warehouse\obj\Debug\net6.0\WarehouseProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\darkp\Downloads\Warehouse-Project-main\Warehouse-Project-main\Warehouse\obj\Debug\net6.0\WarehouseProject.AssemblyInfoInputs.cache
+C:\Users\darkp\Downloads\Warehouse-Project-main\Warehouse-Project-main\Warehouse\obj\Debug\net6.0\WarehouseProject.AssemblyInfo.cs
+C:\Users\darkp\Downloads\Warehouse-Project-main\Warehouse-Project-main\Warehouse\obj\Debug\net6.0\WarehouseProject.csproj.CoreCompileInputs.cache
+C:\Users\darkp\Downloads\Warehouse-Project-main\Warehouse-Project-main\Warehouse\obj\Debug\net6.0\WarehouseProject.csproj.CopyComplete
+C:\Users\darkp\Downloads\Warehouse-Project-main\Warehouse-Project-main\Warehouse\obj\Debug\net6.0\WarehouseProject.dll
+C:\Users\darkp\Downloads\Warehouse-Project-main\Warehouse-Project-main\Warehouse\obj\Debug\net6.0\refint\WarehouseProject.dll
+C:\Users\darkp\Downloads\Warehouse-Project-main\Warehouse-Project-main\Warehouse\obj\Debug\net6.0\WarehouseProject.pdb
+C:\Users\darkp\Downloads\Warehouse-Project-main\Warehouse-Project-main\Warehouse\obj\Debug\net6.0\WarehouseProject.genruntimeconfig.cache
+C:\Users\darkp\Downloads\Warehouse-Project-main\Warehouse-Project-main\Warehouse\obj\Debug\net6.0\ref\WarehouseProject.dll

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using WarehouseProject.Classes;
 
 namespace WarehouseProject
-{   
+{
     /// <summary>
     /// Warehouse project, by Ethan Hensley and Patrick Vergason
     /// </summary>

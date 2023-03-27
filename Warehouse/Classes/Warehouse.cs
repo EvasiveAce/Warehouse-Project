@@ -24,8 +24,8 @@ namespace WarehouseProject.Classes
         string input = string.Empty;
 
         int longestLine = 0;
-        
-        
+
+
         /// <summary>
         /// Main method for the simulation execution.
         /// 
@@ -37,8 +37,9 @@ namespace WarehouseProject.Classes
 
             Console.WriteLine("How many docks to simulate? (1-15)");
             input = Console.ReadLine();
-            DynamicDock(Int32.Parse(input!));
+            DynamicDock(Int32.Parse(input!)); // User input for number of Docks
 
+            // Add trucks to the array until it's full
             for (int i = 0; i < Trucks.Length; i++)
             {
                 Truck truckToAdd = new Truck();
@@ -46,20 +47,12 @@ namespace WarehouseProject.Classes
                 Trucks[i] = truckToAdd;
             }
 
-
-            // Later on
-            // AddTruck(truck1, dock1);
-
-
             // this is where everything should happen
-            while(timeIncrement < 48)
+            while (timeIncrement < 48)
             {
-
-
                 TruckSpawn(); // Pull a truck from the queue to move to a dock, for unloading
 
-
-                // If there are more trucks left
+                // If there are more trucks left, at the entrance
                 if (Entrance.Count > 0)
                 {
                     var item = FindShortestPath();
@@ -72,13 +65,13 @@ namespace WarehouseProject.Classes
                 foreach (var item in Docks)
                 {
                     LongestLineCheck(item);
-                    
+
                     // if a truck is currently being processed at a dock
-                    if(item.Processing)
+                    if (item.Processing)
                     {
                         item.TimeInUse += 1;
                         var truckToUnload = item.Line.Peek(); // Check the contents of the truck currently at the dock
-                        if(truckToUnload.Trailer.Count != 0) // If there is stuff to be unloaded
+                        if (truckToUnload.Trailer.Count != 0) // If there is stuff to be unloaded
                         {
                             var crate = truckToUnload.Unload(); // Unload a crate
                             item.TotalCrates++; // Update TotalCrates amount
@@ -86,26 +79,22 @@ namespace WarehouseProject.Classes
                             if (truckToUnload.Trailer.Count > 0)
                             {
                                 csv.AppendLine($"{timeIncrement}, {truckToUnload.Driver}, {truckToUnload.DeliveryCompany}, {crate.Id}, {crate.Price}, Crate unloaded and more to come");
-                            }
-                            else
+                            } else
                             {
                                 if (item.Line.Count != 0)
                                 {
                                     csv.AppendLine($"{timeIncrement}, {truckToUnload.Driver}, {truckToUnload.DeliveryCompany}, {crate.Id}, {crate.Price}, Crate unloaded and empty, and another driver is here");
-                                }
-                                else
+                                } else
                                 {
                                     csv.AppendLine($"{timeIncrement}, {truckToUnload.Driver}, {truckToUnload.DeliveryCompany}, {crate.Id}, {crate.Price}, Crate unloaded and empty, and another driver is not here");
                                 }
                             }
-                        }
-                        else
+                        } else
                         {
                             item.SendOff(); // Truck is fully unloaded and heads away
                             item.Processing = false;
                         }
-                    }
-                    else
+                    } else
                     {
                         item.TimeNotInUse += 1;
                     }
@@ -123,29 +112,25 @@ namespace WarehouseProject.Classes
 
             Console.WriteLine(Report());
 
-            
-
-
-            
             File.WriteAllText(@"../../../Report.csv", csv.ToString());
-
         }
 
         /// <summary>
         /// Adds a truck to the Entrance Queue
+        /// 
+        /// Special priority to Trucks from the Weezer company
         /// </summary>
         /// <param name="truck">A Truck class object, named truck</param>
         public void AddTruck(Truck truck)
         {
-            if(truck.DeliveryCompany == "Weezer")
+            if (truck.DeliveryCompany == "Weezer")
             {
                 Entrance.Enqueue(truck, 1);
-            }
-            else
+            } else
             {
                 Entrance.Enqueue(truck, 0);
             }
-            
+
             //dock.JoinLine(truck);
         }
 
@@ -177,40 +162,54 @@ namespace WarehouseProject.Classes
             }
             Trucks[truckIndex].Processed = true;
             return truckToAdd;
-            
+
         }
 
+        /// <summary>
+        /// Finds the shortest path from the truck to the dock
+        /// </summary>
+        /// <returns>Returns the closest dock</returns>
         public Dock FindShortestPath()
         {
             Dock shortestPath = new Dock("");
+
+            // Randomly high number to work for the first
             int startingCount = 100000;
+
+            // Loop through all docks
             foreach (var item in Docks)
             {
-                if(item.Line.Count <= startingCount)
+                //If 
+                if (item.Line.Count <= startingCount)
                 {
                     startingCount = item.Line.Count;
                     shortestPath = item;
                 }
             };
-
             return shortestPath;
         }
 
 
+        /// <summary>
+        /// Spawns new trucks and adds them to the line, based on time of day
+        /// </summary>
         public void TruckSpawn()
         {
             Random rnd = new Random();
+            // If midday/normal work hours
             if (timeIncrement > 12 || timeIncrement < 36)
             {
                 var rndTemp = rnd.Next(0, 4);
+                // 75% chance to come in
                 if (rndTemp != 0)
                 {
                     AddTruck(RandomTruckPull());
                 }
-            }
-            else
+            } else
             {
                 var rndTemp = rnd.Next(0, 4);
+
+                // if not midday, so 50% chance to come in
                 if (rndTemp != 0 && rndTemp != 1)
                 {
                     AddTruck(RandomTruckPull());
@@ -218,9 +217,14 @@ namespace WarehouseProject.Classes
             }
         }
 
+        /// <summary>
+        /// Makes number of docks from userInput value
+        /// </summary>
+        /// <param name="userInput">Takes userInput for number of docks to spawn</param>
         public void DynamicDock(int userInput)
         {
-            if(userInput > 15)
+            // Sanitizes inputs
+            if (userInput > 15)
             {
                 userInput = 15;
             } else if (userInput < 1)
@@ -230,12 +234,23 @@ namespace WarehouseProject.Classes
 
             for (int i = 0; i < userInput; i++)
             {
-                // Dock naming convetion D + number
-                Dock dock = new Dock($"D0{i}");
-                Docks.Add(dock);
+                // Dock naming convention D + number
+                if (i < 10)
+                {
+                    Dock dock = new Dock($"D0{i}");
+                    Docks.Add(dock);
+                } else
+                {
+                    Dock dock = new Dock($"D{i}");
+                    Docks.Add(dock);
+                }
             }
         }
 
+        /// <summary>
+        /// Checks for longest line
+        /// </summary>
+        /// <param name="dock">Dock object</param>
         public void LongestLineCheck(Dock dock)
         {
             if (dock.Line.Count > longestLine)
@@ -245,6 +260,10 @@ namespace WarehouseProject.Classes
         }
 
 
+        /// <summary>
+        /// Makes and returns total report for statistics
+        /// </summary>
+        /// <returns>Returns the report!</returns>
         public string Report()
         {
             var reportToReturn = string.Empty;
@@ -267,7 +286,7 @@ namespace WarehouseProject.Classes
             reportToReturn += $"\tTotal Crate Value:\t ${GetTotalValue()}";
 
             reportToReturn += "\n";
-            reportToReturn += $"\tAverage Crate Value:\t ${Math.Round(GetTotalValue()/GetTotalCrates(), 2)}";
+            reportToReturn += $"\tAverage Crate Value:\t ${Math.Round(GetTotalValue() / GetTotalCrates(), 2)}";
 
             reportToReturn += "\n";
             reportToReturn += $"\tAverage Truck Value:\t ${Math.Round(GetTruckAverage(), 2)}";
@@ -280,20 +299,24 @@ namespace WarehouseProject.Classes
 
 
             reportToReturn += "\n";
-            reportToReturn += $"\tAverage Dock Usetime:\t {GetTotalUsetime()/Int32.Parse(input)}";
+            reportToReturn += $"\tAverage Dock Usetime:\t {GetTotalUsetime() / Int32.Parse(input)}";
 
 
             reportToReturn += "\n";
             reportToReturn += $"\tTotal Dock Cost:\t ${GetTotalTrucks() * 100}";
 
             reportToReturn += "\n";
-            reportToReturn += $"\tTotal Revenue:\t\t ${Math.Round(GetTotalValue() - (GetTotalTrucks() * 100),2)}";
+            reportToReturn += $"\tTotal Revenue:\t\t ${Math.Round(GetTotalValue() - (GetTotalTrucks() * 100), 2)}";
 
             reportToReturn += "\n";
             reportToReturn += "\t-.-^-.-^-.-^-.- REPORT -.-^-.-^-.-^-.-";
             return reportToReturn;
         }
 
+        /// <summary>
+        /// Finds amount of total trucks
+        /// </summary>
+        /// <returns>Number of trucks</returns>
         public int GetTotalTrucks()
         {
             int totalTrucks = 0;
@@ -304,6 +327,10 @@ namespace WarehouseProject.Classes
             return totalTrucks;
         }
 
+        /// <summary>
+        /// Finds amount of total crates
+        /// </summary>
+        /// <returns>Number of crates</returns>
         public int GetTotalCrates()
         {
             int totalCrates = 0;
@@ -314,6 +341,10 @@ namespace WarehouseProject.Classes
             return totalCrates;
         }
 
+        /// <summary>
+        /// Finds amount of total value of sales
+        /// </summary>
+        /// <returns>Number of sales with 2 decimals</returns>
         public double GetTotalValue()
         {
             double price = 0;
@@ -323,14 +354,18 @@ namespace WarehouseProject.Classes
             }
             return price;
         }
-        
+
+        /// <summary>
+        /// Gets average price per truck
+        /// </summary>
+        /// <returns>Number of sales per truck with 2 decimals</returns>
         public double GetTruckAverage()
         {
             double truckPrice = 0;
             // probably a really bad way of implementing this but it is all I could come up with at the moment
             foreach (var truck in Trucks)
             {
-                if(truck.Processed)
+                if (truck.Processed)
                 {
                     foreach (var crate in truck.crates)
                     {
@@ -339,9 +374,13 @@ namespace WarehouseProject.Classes
                 }
             }
 
-            return truckPrice/GetTotalTrucks();
+            return truckPrice / GetTotalTrucks();
         }
 
+        /// <summary>
+        /// Gets total downtime of docks in seconds
+        /// </summary>
+        /// <returns>Number for time in seconds</returns>
         public int GetTotalDowntime()
         {
             int totalDowntime = 0;
@@ -352,6 +391,10 @@ namespace WarehouseProject.Classes
             return totalDowntime;
         }
 
+        /// <summary>
+        /// Gets total uptime of docks in seconds
+        /// </summary>
+        /// <returns>Number for time in seconds</returns>
         public int GetTotalUsetime()
         {
             int totalUsetime = 0;
@@ -361,6 +404,5 @@ namespace WarehouseProject.Classes
             }
             return totalUsetime;
         }
-
     }
 }

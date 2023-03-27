@@ -18,8 +18,8 @@ namespace WarehouseProject.Classes
         public double TotalSales { get; set; }
         public int TotalCrates { get; set; }
         public int TotalTrucks { get; set; }
-        public int TimeInUse { get; set; } 
-        public int TimeNotInUse { get; set; } 
+        public int TimeInUse { get; set; }
+        public int TimeNotInUse { get; set; }
 
         public bool Processing = false;
 
@@ -52,7 +52,7 @@ namespace WarehouseProject.Classes
         /// <param name="id">A named ID, being in the specified format</param>
         public Dock(string id)
         {
-            this.Id = id;    
+            this.Id = id;
         }
     }
 }
