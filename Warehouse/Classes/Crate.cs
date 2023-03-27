@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace WarehouseProject.Classes
 {
+    /// <summary>
+    /// Small class to make a crate, with an ID and Price, which is randomized.
+    /// </summary>
     public class Crate
     {
         public string Id { get; set; }
