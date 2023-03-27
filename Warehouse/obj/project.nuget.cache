@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "RWzx25LcQmvjc03rg4wECMtNzZL7CXrdEALETmcTXHTMzQW/H8rDIOeunHUDDuRB2v0xUTs2J33C9kj165FrdQ==",
+
+  "dgSpecHash": "QWHkS+YXE+Fxwjk1o3Zok3wXpV0lP0G71MYii8EqgTQcoEf8+mENQ8C4BEzRRvOeARYUSkr5hFe/Z++RBqdR5g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\darkp\\Downloads\\Warehouse-Project-main\\Warehouse-Project-main\\Warehouse\\WarehouseProject.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Hensl\\Desktop\\Ace\\Personal\\ETSU Work\\Spring2023\\Data Structures\\Warehouse\\Warehouse\\WarehouseProject.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Hensl\\.nuget\\packages\\figgle\\0.5.1\\figgle.0.5.1.nupkg.sha512"
+  ],
   "logs": []
 }

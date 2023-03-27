@@ -23,6 +23,8 @@ namespace WarehouseProject.Classes
 
         public bool Processed = false;
 
+        public Crate[] crates;
+
 
         /// <summary>
         /// When called, will put/load a random number of crates onto the truck.
@@ -52,14 +54,19 @@ namespace WarehouseProject.Classes
         public Truck()
         {
             Random rand = new Random();
+
             var CrateAmount = rand.Next(1, 11); // Randomizes the number of crates to be added to a truck
+            crates = new Crate[CrateAmount];
             Driver = $"{FirstNames[rand.Next(0, FirstNames.Length)]} {LastNames[rand.Next(0, LastNames.Length)]}";
             DeliveryCompany = Companies[rand.Next(0, Companies.Length)];
             // When i is less than the number of crates found above, add a crate
+            
+            
             for (int i = 0; i < CrateAmount; i++)
             {
                 Crate crateToAdd = new Crate();
                 crateToAdd.Id = $"C{i+1}";
+                crates[i] = crateToAdd;
                 //Console.WriteLine(crateToAdd.Id);
                 //Console.WriteLine($"${crateToAdd.Price}");
                 Load(crateToAdd);
